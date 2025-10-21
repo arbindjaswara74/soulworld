@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<!-- SEO Meta Tags -->
+<title>Blog - SoulWorld | Imagination, Thoughts & Ideas</title>
+<meta name="description" content="Welcome to the SoulWorld blog by Deep Thinker — a special space to explore imagination, thoughts, myths, and self-reflection.">
+<meta name="keywords" content="SoulWorld, blog, thoughts, imagination, ideas, creativity, self-reflection, Deep Thinker, storytelling">
+<meta name="author" content="Deep Thinker">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yourdomain.com/blog.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="SoulWorld Blog | Imagination, Thoughts & Ideas">
+<meta property="og:description" content="Explore the SoulWorld blog where imagination, deep thoughts, and creative ideas come alive.">
+<meta property="og:image" content="https://yourdomain.com/images/blog-preview.jpg">
+<meta property="og:url" content="https://yourdomain.com/blog.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoulWorld Blog | Thoughts, Imagination & Ideas">
+<meta name="twitter:description" content="A special space to explore your thoughts, creativity, and imagination.">
+<meta name="twitter:image" content="https://yourdomain.com/images/blog-preview.jpg">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "SoulWorld Blog",
+  "url": "https://yourdomain.com/blog.html",
+  "description": "A blog by Deep Thinker for exploring imagination, thoughts, and self-reflection.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SoulWorld"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Deep Thinker"
+  }
+}
+</script>
+
+<!-- Theme Link -->
+<link rel="stylesheet" href="css/style4.css" id="theme-link">
+
+<!-- Accessibility and Performance Enhancements -->
+<style>
+  /* Skip Link for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #00cccc;
+    color: #fff;
+    padding: 8px 15px;
+    z-index: 100;
+    transition: top 0.3s;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: 10px;
+  }
+
+  /* General improvements */
+  body {
+    line-height: 1.7;
+    font-size: 1.05em;
+  }
+
+  main.blog-section p {
+    margin: 1em 0;
+  }
+
+  nav a:focus, nav a:hover {
+    outline: 2px solid #00cccc;
+    outline-offset: 2px;
+  }
+
+  select:focus, button:focus {
+    outline: 2px solid #00cccc;
+    outline-offset: 2px;
+  }
+
+  /* Responsive improvements */
+  @media(max-width: 600px){
+    header h1 { font-size: 2em; }
+    nav a { display: block; margin: 5px 0; }
+    main.blog-section { padding: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <h1>Welcome to SoulWorld</h1>
+  <nav aria-label="Primary">
+    <a href="home.html">Home</a>
+    <a href="stories.html">Stories</a>
+    <a href="community.html">Community</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Theme Switcher -->
+  <div style="margin-top: 15px;">
+    <label for="theme-select" style="color: #00cccc; font-weight: bold;">Choose Theme:</label>
+    <select id="theme-select" aria-label="Theme Selector" style="padding: 5px; border-radius: 5px;">
+      <option value="css/style4.css">style4</option>
+      <option value="css/style5.css">style5</option>
+      <option value="css/style6.css">style6</option>
+      <option value="css/style8.css">style8</option>
+    </select>
+  </div>
+</header>
+
+<main id="main-content" class="blog-section">
+  <h2>Welcome to the SoulWorld</h2>
+  <p>Hello, I am <strong>Deep Thinker</strong>. This is a special space to Share imagination, thoughts, myths, and self-reflection.</p>
+  <p>We often overlook the small details of life like grass, leaves or a fleeting moment yet they carry immense significance.</p>
+  <p>The goal of SoulWorld is to Share your thoughts anonymously. You may find answers to questions you’ve been searching for through others.</p>
+  <p>Write your thoughts, even if they seem trivial. The thoughts shared by you may change someone's life and also build your confidence.</p>
+  <p>Imagine freely, without fear of judgment. SoulWorld encourages your imagination and allows your soul to express itself.</p>
+</main>
+
+<footer>
+  &copy; 2025 SoulWorld. All rights reserved.
+</footer>
+
+<!-- Theme Switcher Script -->
+<script>
+  const themeSelect = document.getElementById('theme-select');
+  let themeLink = document.querySelector('link[rel="stylesheet"]');
+
+  themeSelect.addEventListener('change', () => {
+    themeLink.href = themeSelect.value;
+    localStorage.setItem('selectedTheme', themeSelect.value);
+  });
+
+  const savedTheme = localStorage.getItem('selectedTheme');
+  if (savedTheme) {
+    themeLink.href = savedTheme;
+    themeSelect.value = savedTheme;
+  }
+</script>
+
+</body>
+</html>

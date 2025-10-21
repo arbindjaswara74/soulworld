@@ -1,0 +1,379 @@
+/* ============================= */
+/* === SOULWORLD KING'S GOLDEN CITY THEME (Enhanced Accessibility & Responsiveness) === */
+/* ============================= */
+
+/* ============================= */
+/* === GLOBAL STYLES === */
+body {
+  font-family: 'Merriweather', serif;
+  color: #3d2e00;
+  background: radial-gradient(circle at top, #fff8e7, #ffd86f 80%);
+  line-height: 1.65;
+  animation: fadeIn 1.5s ease-in;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 0;
+}
+
+/* subtle background image overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('../images/image5.webp') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================= */
+/* === SKIP TO CONTENT LINK === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #ffd700;
+  color: #3d2e00;
+  padding: 8px 15px;
+  z-index: 100;
+  transition: top 0.3s;
+  font-weight: 700;
+  border-radius: 6px;
+}
+.skip-link:focus {
+  top: 10px;
+  outline: 2px solid #b37f00;
+}
+
+/* ============================= */
+/* === HEADER === */
+header {
+  text-align: center;
+  padding: 60px 20px 20px;
+  background: rgba(255, 235, 180, 0.85);
+  box-shadow: 0 4px 25px rgba(255,200,0,0.3);
+  border-bottom: 2px solid #ffd700;
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  color: #b37f00;
+  text-shadow: 0 0 12px #ffd700, 0 0 20px #ffec8b;
+}
+
+header p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2em;
+  color: #8c5e00;
+  margin-top: 5px;
+}
+
+/* ============================= */
+/* === NAVIGATION BAR === */
+nav {
+  text-align: center;
+  background: rgba(255, 223, 100, 0.9);
+  padding: 15px 0;
+  box-shadow: 0 2px 15px rgba(255,190,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+nav a {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  color: #b37f00;
+  margin: 0 15px;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+  outline: none;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #fffacd;
+  transform: scale(1.05);
+  outline: 2px solid #b37f00;
+  border-radius: 4px;
+}
+
+/* ============================= */
+/* === HERO SECTION === */
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: rgba(255, 223, 100, 0.4);
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 10px 35px rgba(255,200,0,0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text {
+  font-family: 'Cinzel', serif;
+  font-size: 2.8em;
+  color: #b37f00;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 0 12px #ffd700;
+}
+
+.hero-section p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.15em;
+  color: #8c5e00;
+  line-height: 1.8;
+}
+
+/* ============================= */
+/* === FEATURED / CARDS === */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(255, 239, 180, 0.9); /* improved overlay contrast */
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 5px 25px rgba(255,200,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  color: #5c3e00;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(255,215,0,0.5);
+  outline: 2px solid #ffd700;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 12px;
+}
+
+.card h3, .card h2 {
+  font-family: 'Cinzel', serif;
+  color: #b37f00;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.card p {
+  font-family: 'Merriweather', serif;
+  flex-grow: 1;
+}
+
+.card a {
+  font-family: 'Merriweather', serif;
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: #ffd700;
+  font-weight: 700;
+}
+
+.card a:hover,
+.card a:focus {
+  text-decoration: underline;
+  outline: 2px solid #b37f00;
+  border-radius: 4px;
+}
+
+/* ============================= */
+/* === STORY / BOOK STYLE === */
+.book-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(255, 239, 180, 0.95);
+  padding: 45px;
+  border-radius: 20px;
+  box-shadow: 0 5px 30px rgba(255,200,0,0.4);
+  color: #5c3e00;
+  font-family: 'Merriweather', serif;
+  position: relative;
+  z-index: 1;
+}
+
+.book-container h1 {
+  font-family: 'Cinzel', serif;
+  color: #b37f00;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.book-container p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.25em;
+  line-height: 2;
+  text-align: justify;
+  margin-bottom: 20px;
+  text-indent: 1.2em;
+}
+
+/* ============================= */
+/* === COMING SOON PAGE === */
+.comingsoon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  padding: 20px;
+}
+
+.comingsoon h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+.comingsoon p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em;
+  color: #5c3e00;
+}
+
+.comingsoon a {
+  font-family: 'Merriweather', serif;
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  color: #5c3e00;
+  font-weight: 700;
+  background-color: #ffd700;
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.comingsoon a:hover,
+.comingsoon a:focus {
+  background-color: #ffec8b;
+  outline: 2px solid #b37f00;
+}
+
+/* ============================= */
+/* === CONTACT FORM === */
+.contact-container {
+  background: rgba(255, 239, 180, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 5px 30px rgba(255,200,0,0.4);
+  width: 90%;
+  max-width: 600px;
+  padding: 35px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+label {
+  font-family: 'Merriweather', serif;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #b37f00;
+}
+
+input, textarea {
+  font-family: 'Merriweather', serif;
+  padding: 12px;
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  margin-top: 8px;
+  background: #fff8e7;
+  color: #5c3e00;
+  font-size: 1em;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #ffd700;
+  background: #fff1b3;
+}
+
+/* ============================= */
+/* === BUTTONS === */
+button {
+  font-family: 'Merriweather', serif;
+  margin-top: 25px;
+  padding: 12px;
+  background: linear-gradient(90deg, #ffd700, #ffec8b);
+  border: none;
+  border-radius: 15px;
+  color: #5c3e00;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(255,200,0,0.3);
+  transition: all 0.3s;
+}
+
+button:hover,
+button:focus {
+  background: linear-gradient(90deg, #ffec8b, #ffd700);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,215,0,0.5);
+  outline: 2px solid #b37f00;
+}
+
+/* ============================= */
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  background: rgba(255, 223, 100, 0.9);
+  color: #5c3e00;
+  font-family: 'Merriweather', serif;
+  font-size: 0.9em;
+  box-shadow: 0 -2px 15px rgba(255,200,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================= */
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================= */
+/* === REDUCED MOTION SUPPORT === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .card:hover {
+    transform: none !important;
+    box-shadow: 0 0 25px rgba(255,200,0,0.3) !important;
+  }
+}
+
+/* ============================= */
+/* === RESPONSIVE === */
+@media(max-width: 600px) {
+  header h1 { font-size: 2.3em; }
+  .hero-text { font-size: 1.8em; }
+  .cards-container { grid-template-columns: 1fr; gap: 15px; }
+  .book-container, .contact-container { padding: 20px; }
+}

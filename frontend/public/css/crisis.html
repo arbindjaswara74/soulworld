@@ -1,0 +1,65 @@
+<!-- crisis.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Crisis Support — SoulWorld</title>
+<link id="theme-link" rel="stylesheet" href="../css/style1.css">
+<script src="../js/theme.js" defer></script>
+<script src="../js/crisis-listener.js" defer></script>
+<style>
+  body{font-family:system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;margin:0;background:linear-gradient(180deg,#f7fbfb,#e8f5f3);color:#062}
+  header{padding:22px;text-align:center;background:#bfeee3}
+  main{max-width:900px;margin:18px auto;padding:16px}
+  .panel{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 20px rgba(2,40,36,0.04)}
+  .alert{background:#fff0f0;border-left:4px solid #e05a5a;padding:12px;border-radius:6px;margin-bottom:12px;color:#5a2b2b}
+  #crisisMessages{height:260px;overflow:auto;margin:10px 0;display:flex;flex-direction:column;gap:8px}
+  .cmsg{padding:10px;border-radius:8px;background:#eef7f3}
+  form#crisisForm{display:flex;gap:8px;margin-top:10px}
+  input#crisisInput{flex:1;padding:10px;border-radius:8px;border:1px solid #e6f1ef}
+  button{padding:10px 14px;border-radius:8px;border:none;background:#08a;color:#fff;font-weight:700;cursor:pointer}
+  .center{text-align:center;margin-top:12px;color:#085}
+</style>
+</head>
+<body>
+<header>
+  <h1>🕊 SoulWorld — Crisis Support Center</h1>
+  <p style="margin:6px 0 0;">We pause. We listen. You are not alone.</p>
+</header>
+
+<main>
+  <div class="panel">
+    <div id="crisisBanner" style="font-weight:700;color:#0a5;margin-bottom:10px">
+      A member of SoulWorld may be in immediate distress. Please be gentle.
+    </div>
+
+    <div class="alert">
+      If you or someone is in immediate danger, contact local emergency services first.
+    </div>
+
+    <section id="helplines" aria-label="Helpline numbers">
+      <h3>Helplines</h3>
+      <p>India emergency: <strong>112</strong></p>
+      <p>Mental health (example): <strong>9152987821</strong></p>
+      <p>Global resources: <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a></p>
+    </section>
+
+    <hr style="margin:12px 0;border:none;border-top:1px solid #f0f3f2" />
+
+    <div id="crisisMessages" aria-label="Crisis messages"></div>
+
+    <form id="crisisForm" aria-label="Share supportive message">
+      <input id="crisisInput" placeholder="Write a supportive message..." autocomplete="off" />
+      <button id="sendCrisisBtn" type="submit">Send</button>
+    </form>
+
+    <div class="center">
+      <small>Site functions are paused for the duration of the crisis. You will be returned automatically when the pause ends.</small>
+    </div>
+  </div>
+</main>
+
+<script src="../js/crisis.js" defer></script>
+</body>
+</html>

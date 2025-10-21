@@ -1,0 +1,391 @@
+/* ============================= */
+/* === SOULWORLD GLOBAL STYLES (Health-Friendly / Sea & Sky) === */
+/* ============================= */
+
+/* ============================= */
+/* === GOOGLE FONTS IMPORT === */
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@600&display=swap');
+
+/* ============================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', serif;
+  color: #0b3d59;
+  background: linear-gradient(to bottom, #020024, #090979, #00d4ff);
+  background: url('../images/image10.webp') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  line-height: 1.65;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* Optional soft-mode for night/low-light reading */
+body.soft-mode {
+  background: linear-gradient(to bottom, #020024, #05053b, #0088aa);
+  color: #b0f7f7;
+}
+
+/* ============================= */
+/* === SKIP TO CONTENT LINK === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #00e5ff;
+  color: #000;
+  padding: 8px 15px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 10px;
+  outline: 2px solid #fff;
+}
+
+/* ============================= */
+/* === HEADER === */
+header {
+  text-align: center;
+  padding: 50px 20px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  color: #1ca7ec;
+  text-shadow: 1px 1px 2px #0b3d59;
+}
+
+header p {
+  font-family: 'Lora', serif;
+  font-size: 1.2em;
+  color: #d0fefe;
+  margin-top: 5px;
+}
+
+/* ============================= */
+/* === NAVIGATION BAR === */
+nav {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 0;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+nav a {
+  font-family: 'Lora', serif;
+  color: #00e5ff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #fff;
+  text-shadow: 0 0 8px #00e5ff;
+  outline: 2px solid #fff;
+}
+
+/* ============================= */
+/* === HERO SECTION === */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 50px rgba(0, 255, 255, 0.2);
+}
+
+.hero-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  color: #1ca7ec;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-family: 'Lora', serif;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15em;
+  color: #d0fefe;
+  line-height: 1.8;
+}
+
+/* ============================= */
+/* === FEATURED / CARDS === */
+.featured-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.featured-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: #1ca7ec;
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px #0b3d59;
+}
+
+/* Cards Container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Card */
+.card {
+  font-family: 'Lora', serif;
+  background: rgba(0,0,0,0.25);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3, .card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #1ca7ec;
+  margin-bottom: 5px;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+
+.card p {
+  color: #d0fefe;
+  flex-grow: 1;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #00e5ff;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.card a:hover,
+.card a:focus {
+  text-decoration: underline;
+  outline: 2px solid #fff;
+}
+
+/* ============================= */
+/* === STORY / BOOK STYLE === */
+.book-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(219, 234, 254, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  color: #111;
+  font-family: 'Lora', serif;
+}
+
+/* Book Heading */
+.book-container h1 {
+  font-family: 'Playfair Display', serif;
+  color: #1ca7ec;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.book-container p {
+  font-size: 1.25em;
+  line-height: 2;
+  text-align: justify;
+  margin-bottom: 20px;
+  text-indent: 1.2em;
+}
+
+/* ============================= */
+/* === COMING SOON PAGE === */
+.comingsoon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  font-family: 'Lora', serif;
+  padding: 20px;
+}
+
+.comingsoon h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.comingsoon p {
+  font-size: 1.5em;
+}
+
+.comingsoon a {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.comingsoon a:hover,
+.comingsoon a:focus {
+  background-color: #000;
+  color: #fff;
+  outline: 2px solid #fff;
+}
+
+/* ============================= */
+/* === CONTACT FORM === */
+.contact-container {
+  font-family: 'Lora', serif;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.3);
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  margin: 40px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #aafafa;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 1em;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #00e5ff;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ============================= */
+/* === BUTTONS === */
+button {
+  font-family: 'Lora', serif;
+  margin-top: 25px;
+  padding: 12px;
+  background: linear-gradient(90deg, #00e5ff, #0077ff);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,255,255,0.4);
+  transition: all 0.3s;
+}
+
+button:hover,
+button:focus {
+  background: linear-gradient(90deg, #00aaff, #00e5ff);
+  box-shadow: 0 0 40px rgba(0,255,255,0.6);
+  transform: translateY(-2px);
+  outline: 2px solid #fff;
+}
+
+/* ============================= */
+/* === FOOTER === */
+footer {
+  font-family: 'Lora', serif;
+  text-align: center;
+  padding: 25px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #b0f7f7;
+  font-size: 0.9em;
+  box-shadow: 0 -2px 15px rgba(0, 255, 255, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================= */
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================= */
+/* === REDUCED MOTION SUPPORT === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card:hover {
+    transform: none !important;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2) !important;
+  }
+}
+
+/* ============================= */
+/* === RESPONSIVE === */
+@media(max-width: 600px) {
+  header h1 {
+    font-size: 2.3em;
+  }
+  .hero-text {
+    font-size: 1.8em;
+  }
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .book-container, .contact-container {
+    padding: 20px;
+  }
+}

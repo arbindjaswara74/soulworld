@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+<title>Community | SoulWorld</title>
+<link id="theme-link" rel="stylesheet" href="css/style1.css">
+<script src="js/theme.js" defer></script>
+<script src="js/crisis-listener.js" defer></script>
+<style>
+  body{font-family:system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;margin:0;background:#f5fbfa;color:#102;}
+  header{padding:18px;text-align:center;background:#d8f0ec}
+  main{max-width:900px;margin:18px auto;padding:12px}
+  #chat{background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(17,34,34,0.06);overflow:hidden}
+  #messages{height:420px;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;}
+  .msg{padding:10px 12px;border-radius:10px;background:#eaf7f3;max-width:84%;align-self:flex-start}
+  .msg.own{background:#d0eef0;align-self:flex-end}
+  .meta{font-size:12px;color:#064;margin-bottom:6px;font-weight:700}
+  form#chatForm{display:flex;gap:8px;padding:12px;border-top:1px solid #f0f5f4;background:#fbfffe}
+  input#msgInput{flex:1;padding:10px;border-radius:8px;border:1px solid #e0efec}
+  button{padding:10px 14px;border-radius:8px;border:none;background:#0b8;color:#002;font-weight:700;cursor:pointer}
+  .note{margin-top:10px;font-size:13px;color:#2b504f;text-align:center}
+  @media(max-width:600px){#messages{height:320px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SoulWorld Community 🌿</h1>
+  <p style="margin:6px 0 0;font-size:14px;">A calm anonymous place to share with a small group of strangers.</p>
+</header>
+
+<main>
+  <div id="chat" aria-live="polite">
+    <div id="messages" aria-label="Messages"></div>
+
+    <form id="chatForm" aria-label="Send a message">
+      <input id="msgInput" autocomplete="off" placeholder="Write a short message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <p class="note">You will be in a temporary 7-person chat group.</p>
+</main>
+
+<!-- Socket.io -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const messages = document.getElementById('messages');
+const form = document.getElementById('chatForm');
+const input = document.getElementById('msgInput');
+
+// Display group info when joined
+socket.on('joined', groupId => {
+  const info = document.createElement('div');
+  info.className = 'msg';
+  info.style.fontStyle = 'italic';
+  info.textContent = `You joined group ${groupId}`;
+  messages.appendChild(info);
+});
+
+// Send message
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!input.value) return;
+  socket.emit('message', input.value);
+  input.value = '';
+});
+
+// Receive message
+socket.on('message', msg => {
+  const div = document.createElement('div');
+  div.className = msg.id === socket.id ? 'msg own' : 'msg';
+  div.textContent = msg.text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+});
+</script>
+</body>
+</html>

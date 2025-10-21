@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<!-- SEO Meta Tags -->
+<title>Stories | SoulWorld – Steps of the Heart & More</title>
+<meta name="description" content="Explore SoulWorld stories like 'Steps of the Heart' and upcoming tales. Discover love, friendship, and imagination in every chapter." />
+<meta name="keywords" content="SoulWorld, stories, imagination, creativity, Paritraan, Rust and Redemption, storytelling, blog, fiction">
+<meta name="author" content="SoulWorld Team">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="SoulWorld – Explore Stories, Imagination & Creativity">
+<meta property="og:description" content="Dive into SoulWorld to read unique stories like Paritraan: Rust and Redemption and Legends of Tomorrow.">
+<meta property="og:image" content="https://yourdomain.com/images/story2.jpg">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoulWorld – Creative Stories & Imagination">
+<meta name="twitter:description" content="Discover unique stories, ideas, and imagination in SoulWorld.">
+<meta name="twitter:image" content="https://yourdomain.com/images/story2.jpg">
+
+<!-- Fonts and Styles -->
+<link id="theme-link" rel="stylesheet" href="css/style1.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  line-height:1.6;
+  color:#e0f7fa;
+  /* ❌ Removed solid background color so CSS background image shows */
+}
+header {
+  text-align:center;
+  padding:2rem 1rem;
+}
+header h1 {
+  font-family:'Montserrat',sans-serif;
+  font-size:2.4rem;
+  color:#00cccc;
+  margin-bottom:0.5rem;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:0.75rem;
+}
+nav a {
+  color:#80ffff;
+  text-decoration:none;
+  font-weight:bold;
+}
+nav a:hover, nav a:focus {
+  outline:2px solid #00ffff;
+  border-radius:5px;
+}
+main { padding:2rem 1rem; }
+.hero-section {
+  text-align:center;
+  margin-bottom:2rem;
+}
+.hero-section h2 {
+  color:#00cccc;
+  font-size:1.8rem;
+}
+.featured-section h2 {
+  text-align:center;
+  margin-bottom:1.5rem;
+  font-size:1.8rem;
+  color:#00cccc;
+}
+.cards-container {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.25rem;
+}
+.card {
+  background: rgba(0,0,0,0.45);
+  border-radius:12px;
+  padding:0.9rem;
+  box-shadow:0 0 15px rgba(0,255,255,0.12);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:0 0 28px rgba(0,255,255,0.2);
+}
+.card img { width:100%; border-radius:8px; display:block; }
+.card h3 { margin-top:0.9rem; font-size:1.15rem; color:#00cccc; }
+.card p { margin:0.35rem 0; color:#cff8f8; }
+footer {
+  text-align:center;
+  padding:1.25rem;
+  background: rgba(195, 168, 168, 0.5);
+  color:#c0f7f7;
+}
+@media(max-width:600px){
+  header h1 { font-size:1.8rem; }
+  .featured-section h2 { font-size:1.4rem; }
+}
+</style>
+</head>
+
+<body>
+<header role="banner">
+  <h1>Welcome to SoulWorld</h1>
+
+  <!-- Theme Switcher -->
+  <div style="margin: 15px 0;">
+    <label for="theme-select" style="color: #fff; margin-right: 10px;">Choose Theme:</label>
+    <select id="theme-select" aria-label="Select website theme">
+      <option value="css/style1.css">style1</option>
+      <option value="css/style2.css">style2</option>
+      <option value="css/style3.css">style3</option>
+      <option value="css/style4.css">style4</option>
+      <option value="css/style5.css">style5</option>
+      <option value="css/style6.css">style6</option>
+      <option value="css/style7.css">style7</option>
+      <option value="css/style8.css">style8</option>
+    </select>
+  </div>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="stories.html">Stories</a>
+    <a href="community.html">Community</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h2>Dive Into the World of Ideas</h2>
+    <p>Explore stories, imagination, and creativity. SoulWorld is your place to discover, reflect, and share your journey.</p>
+  </section>
+
+  <!-- Featured Stories Section -->
+  <section class="featured-section" aria-labelledby="featured-stories">
+    <h2 id="featured-stories">Stories</h2>
+    <div class="cards-container">
+      <a href="short_story.html" class="card-link">
+        <div class="card">
+          <img src="images/image1.webp" alt="short story">
+          <h3>SHORT STORIES</h3>
+          <p>SEE THE WORLD THROUGH DIFFERENT LENSES</p>
+        </div>
+      </a>
+
+      <a href="coming_soon.html" class="card-link">
+        <div class="card">
+          <img src="images/story2.webp" alt="short story- A tale of rebirth and hope">
+          <h3>PARITRAAN: RUST AND REDEMPTION</h3>
+          <p>A STORY OF EMOTION, STRUGGLE, AND REDEMPTION</p>
+        </div>
+      </a>
+
+      <a href="coming_soon.html" class="card-link">
+        <div class="card">
+          <img src="images/story3.webp" alt="Babloo in another world">
+          <h3>BABLOO IN ANOTHER WORLD</h3>
+          <p>A JOURNEY OF SELF-DISCOVERY.</p>
+        </div>
+      </a>
+
+      <a href="coming_soon.html" class="card-link">
+        <div class="card">
+          <img src="images/story4.webp" alt="A new SoulWorld tale">
+          <h3>CRIMSON VOW</h3>
+          <p>AN UPCOMING JOURNEY AWAITS.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  <p>&copy; 2025 SoulWorld. All rights reserved.</p>
+</footer>
+
+<!-- Theme Switcher Script -->
+<script>
+  const themeSelect = document.getElementById('theme-select');
+  const themeLink = document.getElementById('theme-link');
+  const savedTheme = localStorage.getItem('selectedTheme');
+  if (savedTheme) {
+    themeLink.href = savedTheme;
+    themeSelect.value = savedTheme;
+  }
+  themeSelect.addEventListener('change', () => {
+    themeLink.href = themeSelect.value;
+    localStorage.setItem('selectedTheme', themeSelect.value);
+  });
+</script>
+</body>
+</html>

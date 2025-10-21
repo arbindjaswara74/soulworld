@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<title>Stories | SoulWorld – Steps of the Heart & More</title>
+<meta name="description" content="Explore SoulWorld stories like 'Steps of the Heart' and upcoming tales. Discover love, friendship, and imagination in every chapter." />
+<link rel="stylesheet" href="css/style1.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  line-height:1.6;
+  color:#e0f7fa;
+  background:#0a1c2b;
+}
+header {
+  text-align:center;
+  padding:2rem 1rem;
+}
+header h1 {
+  font-family:'Montserrat',sans-serif;
+  font-size:2.4rem;
+  color:#00cccc;
+  margin-bottom:0.5rem;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:0.75rem;
+}
+nav a {
+  color:#80ffff;
+  text-decoration:none;
+  font-weight:bold;
+}
+nav a:hover, nav a:focus {
+  outline:2px solid #00ffff;
+  border-radius:5px;
+}
+main { padding:2rem 1rem; }
+.featured-section h2 {
+  text-align:center;
+  margin-bottom:1.5rem;
+  font-size:1.8rem;
+  color:#00cccc;
+}
+.cards-container {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,320px));
+  gap:1.25rem;
+  justify-content:center; /* center the grid when there's extra space */
+  max-width:1100px; /* constrain overall grid width on very wide screens */
+  margin:0 auto;
+}
+/* Card: fixed, consistent shape with responsive width */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow:0 6px 18px rgba(0,16,24,0.6);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  height: 320px; /* fixed card height for consistent shape */
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,200,220,0.12);
+}
+.card-link { display:block; text-decoration:none; color:inherit; height:100%; }
+.card-link:focus > .card,
+.card-link:hover > .card {
+  transform: translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,200,220,0.16);
+  outline: none;
+}
+.card__media {
+  flex: 0 0 180px; /* fixed media area */
+  width:100%;
+}
+.card__media img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.card-body {
+  padding:0.9rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:0.5rem;
+  flex:1 1 auto;
+}
+.card h3 { margin:0; font-size:1.15rem; color:#00cccc; }
+.card p { margin:0.35rem 0; color:#cff8f8; }
+footer {
+  text-align:center;
+  padding:1.25rem;
+  background: rgba(0,0,0,0.5);
+  color:#c0f7f7;
+}
+@media(max-width:600px){
+  header h1 { font-size:1.8rem; }
+  .featured-section h2 { font-size:1.4rem; }
+  .card { height: auto; }
+  .card__media { flex: 0 0 140px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to SoulWorld</h1>
+  <nav aria-label="Main Navigation">
+    <a href="index.html">Home</a>
+    <a href="stories.html">Stories</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="featured-section" aria-label="Featured Stories Section">
+  <h2>STORIES</h2>
+  <div class="cards-container">
+    <a href="story1.html" class="card-link" aria-label="Steps of the Heart">
+      <article class="card">
+        <div class="card__media">
+          <img src="images/story1.webp" alt="Steps of the Heart - Story of love, sacrifice, and friendship">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3>STEPS OF THE HEART</h3>
+            <p>A story of love, sacrifice, and friendship.</p>
+          </div>
+          <div style="font-size:12px;color:#9feff0;">Read more →</div>
+        </div>
+      </article>
+    </a>
+     <a href="coming_soon.html" class="card-link" aria-label="#">
+      <article class="card">
+        <div class="card__media">
+          <img src="images/#.webp" alt="#">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3>comming soon</h3>
+            <p>#</p>
+          </div>
+          <div style="font-size:12px;color:#9feff0;">Read more →</div>
+        </div>
+      </article>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 SoulWorld. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+/* ============================= */
+/* === SOULWORLD GLOBAL STYLES (Ancient Vibe) === */
+/* ============================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Garamond', serif;
+  color: #3e2f2f; /* dark brown for text */
+  background: linear-gradient(to bottom, #f5e6c8, #e6d4a0);
+  /* image path is relative to this CSS file (css/), images live at ../images/ */
+  background: url('../images/image8.webp') no-repeat center center fixed;
+  background-size: cover;
+  line-height: 1.65;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* ============================= */
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #8b4513;
+  color: #fff;
+  padding: 8px 15px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 10px;
+}
+
+/* ============================= */
+/* === HEADER === */
+header {
+  text-align: center;
+  padding: 50px 20px 20px;
+  background: rgba(80, 60, 40, 0.7);
+  box-shadow: 0 0 20px rgba(120, 90, 50, 0.3);
+}
+
+header h1 {
+  font-family: 'Papyrus', serif;
+  font-size: 3em;
+  color: #4b2e2e;
+  text-shadow: 1px 1px 2px #e0c080;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #5a3e3e;
+  margin-top: 5px;
+}
+
+/* ============================= */
+/* === NAVIGATION BAR === */
+nav {
+  text-align: center;
+  background: rgba(60, 40, 30, 0.85);
+  padding: 15px 0;
+  box-shadow: 0 0 15px rgba(120, 90, 50, 0.3);
+}
+
+nav a {
+  color: #8b4513; /* dark wood tone */
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #d4af37; /* gold highlight */
+  text-shadow: 1px 1px 2px #000;
+  outline: none;
+}
+
+/* ============================= */
+/* === HERO SECTION === */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: rgba(230, 210, 180, 0.7); /* slightly darker for readability */
+  box-shadow: inset 0 0 50px rgba(150, 120, 80, 0.3);
+}
+
+.hero-text {
+  font-size: 2.5em;
+  color: #8b4513;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15em;
+  color: #5a3e3e;
+  line-height: 1.8;
+}
+
+/* ============================= */
+/* === FEATURED / CARDS === */
+.featured-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.featured-section h2 {
+  color: #8b4513;
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #e0c080;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(245, 240, 220, 0.95); /* improved readability */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(120, 90, 50, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(150, 120, 80, 0.4);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3, .card h2 {
+  color: #4b2e2e;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px #e0c080;
+}
+
+.card p {
+  color: #3e2f2f;
+  flex-grow: 1;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #8b4513;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.card a:hover,
+.card a:focus {
+  text-decoration: underline;
+  color: #d4af37;
+  outline: none;
+}
+
+/* ============================= */
+/* === STORY / BOOK STYLE === */
+.book-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(245, 240, 220, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(120,90,50,0.2);
+  color: #3e2f2f;
+  font-family: 'Georgia', serif;
+}
+
+.book-container h1 {
+  color: #4b2e2e;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.book-container p {
+  font-size: 1.25em;
+  line-height: 2;
+  text-align: justify;
+  margin-bottom: 20px;
+  text-indent: 1.2em;
+}
+
+/* ============================= */
+/* === BUTTONS === */
+button {
+  margin-top: 25px;
+  padding: 12px;
+  background: linear-gradient(90deg, #8b4513, #a67c52);
+  border: none;
+  border-radius: 12px;
+  color: #fffaf0;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(120,90,50,0.4);
+  transition: all 0.3s;
+}
+
+button:hover,
+button:focus {
+  background: linear-gradient(90deg, #a67c52, #8b4513);
+  box-shadow: 0 0 40px rgba(150,120,80,0.6);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* ============================= */
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  background: rgba(60, 40, 30, 0.85);
+  color: #d4af37;
+  font-size: 0.9em;
+  box-shadow: 0 -2px 15px rgba(120,90,50,0.2);
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================= */
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================= */
+/* === RESPONSIVE === */
+@media(max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  header h1 {
+    font-size: 2.3em;
+  }
+  .hero-text {
+    font-size: 1.8em;
+  }
+  .cards-container {
+    grid-template-columns: 1fr; /* stack cards on mobile */
+    gap: 15px;
+  }
+  .book-container, .contact-container {
+    padding: 20px;
+  }
+  button {
+    padding: 10px;
+    font-size: 1em;
+  }
+  .card, .hero-section, header {
+    box-shadow: 0 0 10px rgba(120,90,50,0.2);
+  }
+  body {
+    /* small variant path must also go up one level from css/ */
+    background-image: url('../images/image8-small.webp');
+  }
+}
+
+/* ============================= */
+/* === FOCUS STYLES === */
+a:focus, button:focus {
+  outline: 3px solid #d4af37;
+  outline-offset: 3px;
+}

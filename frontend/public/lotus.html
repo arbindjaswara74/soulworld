@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<!-- SEO Meta Tags -->
+<title>Lotus Section | SoulWorld</title>
+<meta name="description" content="Explore darker thoughts shared by people like you in the Lotus Section of SoulWorld.">
+<meta name="keywords" content="SoulWorld, Lotus Section, dark thoughts, stories, creative writing">
+<meta name="author" content="SoulWorld Team">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:title" content="Lotus Section | SoulWorld">
+<meta property="og:description" content="Discover darker thoughts in the Lotus Section. Share, read, and reflect.">
+<meta property="og:image" content="images/lotus-card.webp">
+<meta property="og:url" content="https://yourdomain.com/lotus.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lotus Section | SoulWorld">
+<meta name="twitter:description" content="Explore darker thoughts shared by people like you in the Lotus Section of SoulWorld.">
+<meta name="twitter:image" content="images/lotus-card.webp">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" id="theme-link" href="css/style6.css">
+
+<!-- Inline Styles for Lotus -->
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #ffe6f0; /* Lotus-specific */
+  margin: 0;
+  padding: 0;
+}
+
+h1 { margin-top: 25px; }
+p { margin: 10px 20px; }
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;  margin-top: 30px;
+}
+
+.card {
+  width: 160px;
+  height: 220px;
+  background: url('images/image11.webp') center/cover no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card:hover { transform: scale(1.07); }
+
+.theme-switcher { margin: 15px 0; }
+select { padding: 5px; border-radius: 6px; }
+</style>
+</head>
+
+<body>
+
+<h1>🌸 Lotus Section</h1>
+<p>Explore darker thoughts shared by people like you. Some cards may surprise you.</p>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <label for="theme-select">Choose Theme:</label>
+  <select id="theme-select" data-theme-selector>
+    <option value="css/style5.css">Style 5</option>
+    <option value="css/style6.css">Style 6</option>
+    <option value="css/style8.css">Style 8</option>
+  </select>
+</div>
+
+<!-- Cards Container -->
+<div class="cards-container" id="lotusCards"></div>
+
+<script>
+// --- Theme Switcher ---
+const themeSelect = document.getElementById('theme-select');
+const themeLink = document.getElementById('theme-link');
+
+const savedTheme = localStorage.getItem('selectedTheme');
+if(savedTheme){
+  themeLink.href = savedTheme;
+  themeSelect.value = savedTheme;
+}
+
+themeSelect.addEventListener('change', () => {
+  themeLink.href = themeSelect.value;
+  localStorage.setItem('selectedTheme', themeSelect.value);
+});
+
+// --- Utility: Shuffle Array ---
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// --- Render Cards ---
+function renderCards(cardsArray) {
+  const container = document.getElementById("lotusCards");
+  container.innerHTML = "";
+  cardsArray.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.onclick = () => handleCardClick(c, cardsArray);
+    container.appendChild(div);
+  });
+}
+
+// --- Handle Card Click ---
+function handleCardClick(card, cardsArray) {
+  shuffle(cardsArray);
+  renderCards(cardsArray);
+
+  let votes = Number(localStorage.getItem("votes") || 10);
+
+  if(card.type === "tryAgain"){
+    votes = Math.max(0, votes - 1);
+    localStorage.setItem("votes", votes);
+    alert("Try again! You lost 1 vote.");
+  } else if(card.type === "golden"){
+    votes += 5;
+    localStorage.setItem("votes", votes);
+    alert("✨ You found a Golden Lotus! +5 votes!");
+  } else {
+    localStorage.setItem("currentCardSection", "lotus");
+    localStorage.setItem("currentCardId", card.id);
+    window.location.href = "card.html";
+  }
+}
+
+// --- Initialize Cards ---
+let lotusLibrary = JSON.parse(localStorage.getItem("lotusLibrary") || "[]");
+let cards = [];
+for (let i = 0; i < 10; i++) cards.push({ type: "tryAgain" });
+cards.push({ type: "golden" });
+lotusLibrary.forEach(c => cards.push({ type: "regular", id: c.id }));
+
+shuffle(cards);
+renderCards(cards);
+</script>
+
+</body>
+</html>

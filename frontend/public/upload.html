@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<title>Share Your Thought | SoulWorld</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+<!-- Scripts -->
+<script src="js/theme.js" defer></script>
+<script src="js/crisis-listener.js" defer></script>
+<script src="js/upload.js" defer></script>
+
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #0a1c2b;
+    color: #e0f7fa;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg,#008b8b,#00cccc);
+    color: #fff;
+    border-bottom: 3px solid #80ffff;
+  }
+
+  header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    color: #ffd60a;
+  }
+
+  header p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: #cff8f8;
+  }
+
+  main.container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(0,255,255,0.05);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.15);
+  }
+
+  form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #80ffff;
+  }
+
+  form input, form textarea, form select {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border-radius: 8px;
+    border: 1px solid #00cccc;
+    background: #f0f8ff;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .actions {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    padding: 0.75rem 1.3rem;
+    border: none;
+    border-radius: 8px;
+    background: #ffd60a;
+    color: #001;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  button:hover {
+    background: #ffea85;
+    transform: translateY(-2px);
+  }
+
+  .status {
+    margin-top: 0.8rem;
+    font-style: italic;
+    color: lightgreen;
+  }
+
+  @media(max-width:600px){
+    main.container {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+    header h1 {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NO ONE WILL KNOW</h1>
+  <p>Write honestly & freely whether it’s an idea, emotion, or random thought.</p>
+  <p>Your thought will be anonymously shared in the SoulWorld Library.</p>
+   <p>Not ready to share yet? you can skip for now and explore soulworld.</p>
+</header>
+
+<main class="container">
+  <form id="uploadForm" autocomplete="off">
+    <label for="title">Title</label>
+    <input id="title" maxlength="200" required placeholder="Title of your thought..." />
+
+    <label for="content">Thought</label>
+    <textarea id="content" rows="8" placeholder="Write what's in your heart..." required></textarea>
+    <p id="sentimentIndicator" style="margin-top:0.5rem; font-style:italic; color:#999;">💭 Waiting for input...</p>
+
+    <label for="section">Section</label>
+    <select id="section">
+      <option value="leaf">Leaf (light)</option>
+      <option value="lotus">Lotus (deep)</option>
+    </select>
+
+    <div class="actions">
+      <button type="submit">Upload Thought</button>
+      <button type="button" id="skipBtn">Skip</button>
+    </div>
+    <div id="status" class="status" aria-live="polite"></div>
+  </form>
+</main>
+
+<script>
+// Redirect if user skips
+document.getElementById('skipBtn').onclick = ()=> location.href='home.html';
+
+// Simple sentiment detection (local)
+const contentInput = document.getElementById('content');
+const indicator = document.getElementById('sentimentIndicator');
+const sectionSelect = document.getElementById('section');
+
+contentInput.addEventListener('input', ()=>{
+  const text = contentInput.value.trim().toLowerCase();
+  if(!text){
+    indicator.textContent = '💭 Waiting for input...';
+    indicator.style.color = '#999';
+    contentInput.style.background = '#f0f8ff';
+    return;
+  }
+
+  const happyWords = ['happy','smile','peace','hope','love','good','shine'];
+  const sadWords = ['sad','pain','alone','tears','broken','dark','lost','hurt'];
+
+  if(sadWords.some(w => text.includes(w))){
+    indicator.textContent = '💮 Lotus Library (Sad / Emotional)';
+    indicator.style.color = '#8e24aa';
+    contentInput.style.background = '#e8d0f5';
+    sectionSelect.value = 'lotus';
+  } else if(happyWords.some(w => text.includes(w))){
+    indicator.textContent = '🌿 Leaf Library (Happy / Moral)';
+    indicator.style.color = '#2e7d32';
+    contentInput.style.background = '#d0f5d0';
+    sectionSelect.value = 'leaf';
+  } else {
+    indicator.textContent = '💭 Neutral Thought';
+    indicator.style.color = '#999';
+    contentInput.style.background = '#f0f8ff';
+  }
+});
+
+// Form submission (connects to backend)
+document.getElementById('uploadForm').onsubmit = async (e)=>{
+  e.preventDefault();
+  const title = document.getElementById('title').value.trim();
+  const content = contentInput.value.trim();
+  const section = sectionSelect.value || 'leaf';
+  const status = document.getElementById('status');
+
+  if(!title || !content) return alert('Please fill both fields.');
+
+  status.textContent = 'Uploading... ⏳';
+
+  try {
+    const res = await fetch('/api/stories', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ title, content, section })
+    });
+
+    if(res.ok){
+      status.textContent = 'Your thought has been shared! 🌌';
+      e.target.reset();
+      indicator.textContent = '💭 Waiting for input...';
+      indicator.style.color = '#999';
+      contentInput.style.background = '#f0f8ff';
+      setTimeout(()=> location.href='home.html', 1500);
+    } else {
+      status.textContent = '❌ Upload failed. Try again.';
+    }
+  } catch(err){
+    console.error(err);
+    status.textContent = '⚠️ Error connecting to server.';
+  }
+};
+</script>
+
+</body>
+</html>

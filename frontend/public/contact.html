@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<title>Contact SoulWorld | Get in Touch</title>
+<meta name="description" content="Contact SoulWorld to share your ideas, questions, or collaboration opportunities. Reach out and connect with Deepthiner and the SoulWorld team.">
+
+<link rel="stylesheet" href="css/style1.css">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top, #0a1c2b, #203a43, #25607a); /* Softer gradient */
+    color: #e0f7fa; /* Softer text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    padding: 50px 20px 20px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    color: #80ffff; /* Softer cyan */
+    text-shadow: 0 0 10px #80ffff;
+  }
+
+  header p {
+    font-size: 1.2em;
+    color: #c0f7f7;
+    line-height: 1.6;
+  }
+
+  .contact-container {
+    background: rgba(0, 0, 0, 0.45); /* Softer background */
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.2);
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    margin-bottom: 50px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #aafafa;
+  }
+
+  input, textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.1);
+    color: #e0f7fa;
+    font-size: 1em;
+    resize: none;
+    transition: all 0.3s;
+  }
+
+  input:focus, textarea:focus {
+    outline: 2px solid #80ffff;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 8px #80ffff;
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 12px;
+    background: linear-gradient(90deg, #80ffff, #40a0c0); /* Softer gradient */
+    border: none;
+    border-radius: 12px;
+    color: #000; /* Easier on eyes */
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,255,255,0.3);
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background: linear-gradient(90deg, #40c0e0, #80ffff);
+    box-shadow: 0 0 30px rgba(0,255,255,0.5);
+    transform: translateY(-2px);
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #c0f7f7;
+    background: rgba(0,0,0,0.45);
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+  @media(max-width:600px) {
+    header h1 { font-size: 2.3em; }
+    .contact-container { padding: 25px; }
+  }
+
+  /* Reduced motion for sensitive users */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Contact SoulWorld</h1>
+  <p>Have questions, ideas, or collaborations? Reach out to us below.</p>
+</header>
+
+<div class="contact-container">
+  <form id="contactForm" aria-label="Contact Form">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required autocomplete="name" aria-required="true">
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email" required autocomplete="email" aria-required="true">
+
+    <label for="message">Your Message</label>
+    <textarea id="message" rows="5" placeholder="Write your message..." required aria-required="true"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+
+<footer>
+  &copy; 2025 SoulWorld | Made with ❤ by Deepthiner
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for reaching out! 🌌 Your message has been received.');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

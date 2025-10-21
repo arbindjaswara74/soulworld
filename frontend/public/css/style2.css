@@ -1,0 +1,283 @@
+/* ============================= */
+/* === SOULWORLD GLOBAL STYLES (Forest Theme) === */
+/* ============================= */
+
+/* ============================= */
+/* === GOOGLE FONTS IMPORT === */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=EB+Garamond&display=swap');
+
+/* ============================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'EB Garamond', serif; /* updated font */
+  color: #e6f2d9; /* soft mossy cream */
+  background: linear-gradient(to bottom, #699969, #145214, #3ba035); /* forest canopy gradient */
+  background: url('../images/image9.webp') no-repeat center center fixed;
+  background-size: cover;
+  line-height: 1.65;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* ============================= */
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #145214; /* dark forest green */
+  color: #e6f2d9; /* mossy cream text */
+  padding: 8px 15px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 10px;
+}
+
+/* ============================= */
+/* === HEADER === */
+header {
+  text-align: center;
+  padding: 50px 20px 20px;
+  background: rgba(15, 50, 15, 0.7);
+  box-shadow: 0 0 20px rgba(0, 80, 0, 0.3);
+}
+
+header h1 {
+  font-family: 'Cinzel', serif; /* updated font */
+  font-size: 3em;
+  color: #a3ff8f; /* leaf green */
+  text-shadow: 1px 1px 2px #0b3d0b;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #cde8cd;
+  margin-top: 5px;
+}
+
+/* ============================= */
+/* === NAVIGATION BAR === */
+nav {
+  text-align: center;
+  background: rgba(10, 40, 10, 0.85);
+  padding: 15px 0;
+  box-shadow: 0 0 15px rgba(0, 80, 0, 0.3);
+}
+
+nav a {
+  color: #8fe080;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #fff;
+  text-shadow: 0 0 6px #a3ff8f;
+  outline: none;
+}
+
+/* ============================= */
+/* === HERO SECTION === */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: rgba(20, 60, 20, 0.6); /* slightly darker overlay for readability */
+  box-shadow: inset 0 0 50px rgba(0, 100, 0, 0.3);
+}
+
+.hero-text {
+  font-family: 'Cinzel', serif; /* updated font */
+  font-size: 2.5em;
+  color: #a3ff8f;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15em;
+  color: #d4edc4;
+  line-height: 1.8;
+}
+
+/* ============================= */
+/* === FEATURED / CARDS === */
+.featured-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.featured-section h2 {
+  font-family: 'Cinzel', serif; /* updated font */
+  color: #a3ff8f;
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #0b3d0b;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(200, 240, 200, 0.9); /* slightly more opaque for readability */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 100, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 150, 0, 0.4);
+}
+
+/* ============================= */
+/* === FIX CARD IMAGES === */
+.card img {
+  width: 100%;       /* full width of card */
+  height: 200px;     /* fixed height */
+  object-fit: cover; /* crop proportionally to fill */
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3, .card h2 {
+  color: #0b3d0b;
+  margin-bottom: 5px;
+  text-shadow: 0 0 2px #a3ff8f;
+}
+
+.card p {
+  color: #0b3d0b;
+  flex-grow: 1;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #145214;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.card a:hover,
+.card a:focus {
+  text-decoration: underline;
+  color: #a3ff8f;
+}
+
+/* ============================= */
+/* === STORY / BOOK STYLE === */
+.book-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(220, 240, 200, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,100,0,0.2);
+  color: #0b3d0b;
+  font-family: 'EB Garamond', serif;
+}
+
+.book-container h1 {
+  font-family: 'Cinzel', serif;
+  color: #145214;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.book-container p {
+  font-size: 1.25em;
+  line-height: 2;
+  text-align: justify;
+  margin-bottom: 20px;
+  text-indent: 1.2em;
+}
+
+/* ============================= */
+/* === BUTTONS === */
+button {
+  margin-top: 25px;
+  padding: 12px;
+  background: linear-gradient(90deg, #145214, #3ba035);
+  border: none;
+  border-radius: 12px;
+  color: #e6f2d9;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,150,0,0.4);
+  transition: all 0.3s;
+}
+
+button:hover,
+button:focus {
+  background: linear-gradient(90deg, #3ba035, #145214);
+  box-shadow: 0 0 40px rgba(0,180,0,0.6);
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  background: rgba(10, 40, 10, 0.85);
+  color: #a3ff8f;
+  font-size: 0.9em;
+  box-shadow: 0 -2px 15px rgba(0,100,0,0.2);
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================= */
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================= */
+/* === RESPONSIVE === */
+@media(max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); /* tablet view */
+    gap: 15px;
+  }
+}
+
+@media(max-width: 600px) {
+  header h1 {
+    font-size: 2.3em;
+  }
+  .hero-text {
+    font-size: 1.8em;
+  }
+  .cards-container {
+    grid-template-columns: 1fr; /* stack cards on mobile */
+    gap: 15px;
+  }
+  .book-container, .contact-container {
+    padding: 20px;
+  }
+}

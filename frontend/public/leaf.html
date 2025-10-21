@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+<title>Leaf Section | SoulWorld</title>
+<meta name="description" content="Explore clean thoughts shared by people like you in the Leaf Section of SoulWorld.">
+<meta name="keywords" content="SoulWorld, Leaf Section, clean thoughts, stories, creative writing">
+<meta name="author" content="SoulWorld Team">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" id="theme-link" href="css/style6.css">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #9db19d;
+}
+
+h1 {
+  margin-top: 25px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.card {
+  width: 160px;
+  height: 220px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: url('images/image12.webp') center/cover no-repeat;
+}
+
+.card:hover {
+  transform: scale(1.07);
+}
+
+.theme-switcher {
+  margin: 15px 0;
+}
+</style>
+</head>
+<body>
+
+<h1>🌿 Leaf Section</h1>
+<p>Explore clean thoughts shared by people like you. Some cards may surprise you.</p>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <label for="theme-select">Choose Theme:</label>
+  <select id="theme-select">
+    <option value="css/style5.css">Style 5</option>
+    <option value="css/style6.css">Style 6</option> 
+    <option value="css/style8.css">Style 8</option>
+  </select>
+</div>
+
+<div class="cards-container" id="cardsContainer"></div>
+
+<script>
+// Theme switcher
+const themeSelect = document.getElementById('theme-select');
+const themeLink = document.getElementById('theme-link');
+const savedTheme = localStorage.getItem('selectedTheme');
+if(savedTheme){
+  themeLink.href = savedTheme;
+  themeSelect.value = savedTheme;
+}
+themeSelect.addEventListener('change', () => {
+  themeLink.href = themeSelect.value;
+  localStorage.setItem('selectedTheme', themeSelect.value);
+});
+
+// Shuffle function
+function shuffle(array){
+  for(let i = array.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Load cards
+const cardsContainer = document.getElementById('cardsContainer');
+let library = JSON.parse(localStorage.getItem('leafLibrary') || '[]');
+library = library.filter(card => card.status !== 'deleted');
+let regularCards = [...library];
+
+// Add 10 Try Again cards
+let tryCards = Array(10).fill({ special: 'try' });
+let allCards = [...regularCards, ...tryCards];
+
+// Add one Golden Leaf
+if(regularCards.length > 0){
+    let randIndex = Math.floor(Math.random() * regularCards.length);
+    regularCards[randIndex].special = 'golden';
+}
+
+// Shuffle all cards
+allCards.sort(() => Math.random() - 0.5);
+
+// Render cards
+allCards.forEach(card => {
+    let cardDiv = document.createElement('div');
+    cardDiv.className = 'card';
+    cardDiv.innerHTML = ''; // visually identical; all use background image
+    cardDiv.onclick = () => {
+        if(card.special === 'try'){
+            adjustVotes(-1);
+            alert('Try Again! You lost 1 vote.');
+        } else if(card.special === 'golden'){
+            adjustVotes(5);
+            alert('Golden Leaf! You gained 5 votes.');
+        } else {
+            localStorage.setItem('currentCard', JSON.stringify(card));
+            window.location.href = 'card.html?section=leaf';
+        }
+        shuffleCards();
+    }
+    cardsContainer.appendChild(cardDiv);
+});
+
+// Vote adjustment
+function adjustVotes(n){
+    let votes = parseInt(localStorage.getItem('votesToday') || 10);
+    votes = Math.max(votes + n, 0);
+    localStorage.setItem('votesToday', votes);
+}
+
+// Shuffle DOM cards
+function shuffleCards(){
+    const container = document.getElementById('cardsContainer');
+    for(let i = container.children.length; i >= 0; i--){
+        container.appendChild(container.children[Math.random() * i | 0]);
+    }
+}
+</script>
+
+</body>
+</html>

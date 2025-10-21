@@ -1,0 +1,65 @@
+<!-- readthought.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Read Thought | SoulWorld</title>
+<link id="theme-link" rel="stylesheet" href="../css/style1.css">
+<script src="../js/theme.js" defer></script>
+<script src="../js/crisis-listener.js" defer></script>
+<style>
+  body{font-family:system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;margin:0;background:#fff9e6;color:#111}
+  .container{max-width:800px;margin:24px auto;padding:18px}
+  .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+  h2{margin-top:0;color:#073}
+  .vote-buttons{margin-top:12px;display:flex;gap:10px}
+  button{padding:10px 14px;border-radius:8px;border:none;background:#0a8;color:#002;font-weight:700;cursor:pointer}
+  a.back{display:inline-block;margin-top:16px;text-decoration:none;color:#036}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card" id="cardView" role="article" aria-live="polite">
+    <h2 id="title">Loading…</h2>
+    <p id="content"></p>
+    <div class="vote-buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+    <a id="backLink" class="back" href="community.html">← Back</a>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  const section = localStorage.getItem('currentCardSection') || 'leaf';
+  const id = localStorage.getItem('currentCardId');
+  const libKey = section === 'lotus' ? 'lotusLibrary' : 'leafLibrary';
+  const lib = JSON.parse(localStorage.getItem(libKey) || '[]');
+  const card = lib.find(c => c.id === id);
+  if(!card){
+    document.getElementById('title').textContent = 'Card not found';
+    document.getElementById('content').textContent = '';
+    return;
+  }
+  document.getElementById('title').textContent = card.title || 'Untitled';
+  document.getElementById('content').textContent = card.content || '';
+  document.getElementById('backLink').href = section === 'lotus' ? 'lotus.html' : 'leaf.html';
+
+  function saveVote(type){
+    card.votes = card.votes || { yes:0, no:0 };
+    card.votes[type] = (card.votes[type] || 0) + 1;
+    // update library
+    const idx = lib.findIndex(c => c.id === id);
+    if(idx !== -1){ lib[idx] = card; localStorage.setItem(libKey, JSON.stringify(lib)); }
+    alert('Vote recorded anonymously.');
+    location.href = section === 'lotus' ? 'lotus.html' : 'leaf.html';
+  }
+
+  document.getElementById('yesBtn').addEventListener('click', ()=> saveVote('yes'));
+  document.getElementById('noBtn').addEventListener('click', ()=> saveVote('no'));
+});
+</script>
+</body>
+</html>

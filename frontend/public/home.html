@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your thoughts and stories anonymously on SoulWorld.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SoulWorld – Share Your Thoughts">
+<meta property="og:description" content="Express yourself anonymously.">
+<meta property="og:image" content="/images/soulworld-banner.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yoursite.com/thispage.html">
+
+<!-- SEO Meta Tags -->
+<title>Welcome to SoulWorld – Ideas & Thoughts</title>
+<meta name="description" content="SoulWorld is a creative platform for sharing ideas, thoughts, and reflections anonymously.">
+<meta name="keywords" content="SoulWorld, thoughts, ideas, creative sharing, leaf, lotus">
+<meta name="author" content="SoulWorld Team">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:title" content="SoulWorld – Explore Thoughts and Ideas">
+<meta property="og:description" content="Dive into SoulWorld to share and explore unique thoughts anonymously.">
+<meta property="og:image" content="images/og-image.webp">
+<meta property="og:url" content="https://yourdomain.com/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoulWorld – Creative Thoughts">
+<meta name="twitter:description" content="Share and explore ideas anonymously in SoulWorld.">
+<meta name="twitter:image" content="images/og-image.webp">
+
+<!-- Fonts and Styles -->
+<link rel="stylesheet" id="theme-link" href="css/style3.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+  /* Let the active theme (css/style*.css) control the page background and base colors.
+     For pages that need special palettes, wrap content in a class and style that wrapper. */
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  header h1 {
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #d4a373;
+  }
+
+  .hero-section {
+    margin-top: 40px;
+  }
+
+  .hero-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .card {
+    width: 200px;
+    height: 280px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(229, 212, 212, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-label {
+    margin-top: 10px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9em;
+  }
+
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .card {
+      width: 160px;
+      height: 220px;
+    }
+    .hero-text {
+      font-size: 1.5em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header role="banner">
+  <h1>Welcome to SoulWorld</h1>
+
+  <!-- Theme Switcher -->
+  <div style="margin: 15px 0;">
+    <label for="theme-select" style="color: #fff; margin-right: 10px;">Choose Theme:</label>
+    <select id="theme-select" aria-label="Select website theme">
+      <option value="css/style1.css">style1</option>
+      <option value="css/style2.css">style2</option>
+      <option value="css/style3.css">style3</option>
+      <option value="css/style4.css">style4</option>
+      <option value="css/style5.css">style5</option>
+      <option value="css/style6.css">style6</option>
+      <option value="css/style7.css">style7</option>
+      <option value="css/style8.css">style8</option>
+    </select>
+  </div>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="stories.html">Stories</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero-section" aria-labelledby="hero-title">
+    <h2 id="hero-title" class="hero-text">Dive Into the World of Ideas</h2>
+    <p>Share your thoughts anonymously, explore others’ reflections, and engage with our interactive Leaf & Lotus system.</p>
+  </section>
+
+  <!-- Main Thought System Section -->
+  <section class="thought-system" aria-labelledby="thought-system-title" style="margin-top: 40px;">
+    <h2 id="thought-system-title">Explore & Share Thoughts</h2>
+
+    <div class="cards-container">
+      <div>
+        <div class="card" id="leafCard" title="Explore clean thoughts" 
+             style="background-image: url('images/image12.webp');"></div>
+        <div class="card-label">Leaf Deck</div>
+      </div>
+
+      <div>
+        <div class="card" id="uploadCard" title="Share your thought" 
+             style="background-image: url('images/image13.webp');"></div>
+        <div class="card-label">Upload</div>
+      </div>
+
+      <div>
+        <div class="card" id="lotusCard" title="Explore dark thoughts" 
+             style="background-image: url('images/image11.webp');"></div>
+        <div class="card-label">Lotus Deck</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  <p>&copy; 2025 SoulWorld. All rights reserved.</p>
+</footer>
+
+<!-- Theme Switcher & Card Click JS -->
+<script>
+  // Theme switcher
+  const themeSelect = document.getElementById('theme-select');
+  const themeLink = document.getElementById('theme-link');
+  const savedTheme = localStorage.getItem('selectedTheme');
+  if(savedTheme){
+    themeLink.href = savedTheme;
+    themeSelect.value = savedTheme;
+  }
+  themeSelect.addEventListener('change', () => {
+    themeLink.href = themeSelect.value;
+    localStorage.setItem('selectedTheme', themeSelect.value);
+  });
+
+  // Card click logic
+  document.getElementById("leafCard").onclick = () => window.location.href = "leaf.html";
+  document.getElementById("uploadCard").onclick = () => window.location.href = "upload.html";
+  document.getElementById("lotusCard").onclick = () => window.location.href = "lotus.html";
+</script>
+
+</body>
+</html>
