@@ -51,9 +51,8 @@ exports.getStoryById = async (req, res, next) => {
 // DELETE /api/stories/:id
 exports.deleteStory = async (req, res, next) => {
   try {
-    const story = await Story.findById(req.params.id);
-    if (!story) return res.status(404).json({ message: 'Story not found' });
-    await story.remove();
+    const deleted = await Story.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: 'Story not found' });
     res.json({ message: 'Story deleted' });
   } catch (err) {
     next(err);

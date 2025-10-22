@@ -26,9 +26,8 @@ exports.getThoughts = async (req, res, next) => {
 // DELETE /api/thoughts/:id
 exports.deleteThought = async (req, res, next) => {
   try {
-    const t = await Thought.findById(req.params.id);
-    if (!t) return res.status(404).json({ message: 'Thought not found' });
-    await t.remove();
+    const deleted = await Thought.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: 'Thought not found' });
     res.json({ message: 'Thought deleted' });
   } catch (err) {
     next(err);

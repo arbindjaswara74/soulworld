@@ -1,0 +1,34 @@
+name: Backend smoke tests
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: |
+          npm ci
+
+      - name: Run DB connection test (when MONGODB_URI secret provided)
+        if: secrets.MONGODB_URI != ''
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: |
+          node ../backend/scripts/test-mongo-conn.js
+
+      - name: Skip DB test when no secret
+        if: secrets.MONGODB_URI == ''
+        run: echo "MONGODB_URI secret not provided; skipping DB connection test."

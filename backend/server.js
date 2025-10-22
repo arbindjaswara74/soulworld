@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -10,19 +11,24 @@ const http = require('http');
 const { Server } = require('socket.io');
 
 const connectDB = require('./config/db'); // Ensure this connects using process.env.MONGODB_URI
+// buildUriFromEnv is attached to the exported function in config/db
+const buildUriFromEnv = connectDB.buildUriFromEnv;
 const storyRoutes = require('./routes/storyRoutes');
 const thoughtRoutes = require('./routes/thoughtRoutes');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
 
-// Connect to MongoDB
-connectDB(process.env.MONGODB_URI);
+// Connect to MongoDB - prefer MONGODB_URI, fall back to discrete env vars (DB_USER/DB_PASS/DB_HOST/DB_NAME)
+const chosenUri = process.env.MONGODB_URI || buildUriFromEnv() || undefined;
+connectDB(chosenUri);
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public', {
+// Serve static files from backend/public if it exists, otherwise fall back to project-level public/
+const staticDir = path.join(__dirname, '..', 'public');
+app.use(express.static(staticDir, {
   maxAge: '7d',
   etag: true,
 }));
