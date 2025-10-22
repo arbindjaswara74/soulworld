@@ -9,23 +9,36 @@ const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
 
-const connectDB = require('./config/db'); // Ensure this connects using process.env.MONGODB_URI
+const connectDB = require('./config/db'); // Connect using process.env.MONGODB_URI
 const storyRoutes = require('./routes/storyRoutes');
 const thoughtRoutes = require('./routes/thoughtRoutes');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
 
+// --------------------
 // Connect to MongoDB
-connectDB(process.env.MONGODB_URI);
+// --------------------
+const mongoURI = process.env.MONGODB_URI;
+if (!mongoURI) {
+  console.warn('⚠️ MONGODB_URI not set. DB connection will be skipped.');
+} else {
+  connectDB(mongoURI)
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch(err => {
+      console.error('❌ MongoDB connection error:', err.message);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('[db] continuing without DB connection (local dev)');
+      }
+    });
+}
 
+// --------------------
 // Middlewares
+// --------------------
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public', {
-  maxAge: '7d',
-  etag: true,
-}));
+app.use(express.static('public', { maxAge: '7d', etag: true }));
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(xss());
@@ -35,25 +48,29 @@ app.use(compression());
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
 app.use(limiter);
 
+// --------------------
 // Routes
+// --------------------
 app.use('/api/stories', storyRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
-// Health check route
+// Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
 
+// --------------------
 // Error handling
+// --------------------
 app.use(notFound);
 app.use(errorHandler);
 
-// Create HTTP server for Socket.io
+// --------------------
+// Socket.io Setup
+// --------------------
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: { origin: '*' },
-});
+const io = new Server(server, { cors: { origin: '*' } });
 
-// --- 7-Person Temporary Chat Logic ---
-const groups = []; // {id: 'group-1', users: []}
+// Temporary 7-person group chat logic
+const groups = []; // { id: 'group-1', users: [] }
 
 function joinGroup(socket) {
   let group = groups.find(g => g.users.length < 7);
@@ -71,7 +88,7 @@ function joinGroup(socket) {
 io.on('connection', (socket) => {
   joinGroup(socket);
 
-  socket.on('message', msg => {
+  socket.on('message', (msg) => {
     io.to(socket.groupId).emit('message', { id: socket.id, text: msg });
   });
 
@@ -87,7 +104,9 @@ io.on('connection', (socket) => {
   });
 });
 
+// --------------------
 // Start server
+// --------------------
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`SoulWorld backend with chat running on port ${PORT}`);

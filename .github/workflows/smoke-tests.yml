@@ -1,5 +1,6 @@
 name: Backend smoke tests
 
+
 on:
   pull_request:
   push:
@@ -8,8 +9,6 @@ on:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    env:
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,12 +22,14 @@ jobs:
         working-directory: ./backend
         run: |
           npm ci
-
       - name: Run DB connection test (when MONGODB_URI secret provided)
-        if: ${{ env.MONGODB_URI != '' }}
+        working-directory: ./backend
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
-          node ../backend/scripts/test-mongo-conn.js
-
-      - name: Skip DB test when no secret
-        if: ${{ env.MONGODB_URI == '' }}
-        run: echo "MONGODB_URI secret not provided; skipping DB connection test."
+          if [ -z "$MONGODB_URI" ]; then
+            echo "MONGODB_URI not provided, skipping DB connection test.";
+          else
+            echo "Running DB connection test...";
+            node -e "const mongoose = require('mongoose'); mongoose.connect(process.env.MONGODB_URI).then(() => { console.log('DB connection successful'); process.exit(0); }).catch(err => { console.error('DB connection failed', err); process.exit(1); });"
+          fi
