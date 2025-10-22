@@ -19,6 +19,8 @@
 <!-- Scripts -->
 <script src="js/theme.js" defer></script>
 <script src="js/crisis-listener.js" defer></script>
+<!-- Optional API helper (will prefer configured API_BASE when present) -->
+<script src="js/api.js" defer></script>
 <script src="js/upload.js" defer></script>
 
 <style>
@@ -152,79 +154,7 @@
   </form>
 </main>
 
-<script>
-// Redirect if user skips
-document.getElementById('skipBtn').onclick = ()=> location.href='home.html';
-
-// Simple sentiment detection (local)
-const contentInput = document.getElementById('content');
-const indicator = document.getElementById('sentimentIndicator');
-const sectionSelect = document.getElementById('section');
-
-contentInput.addEventListener('input', ()=>{
-  const text = contentInput.value.trim().toLowerCase();
-  if(!text){
-    indicator.textContent = '💭 Waiting for input...';
-    indicator.style.color = '#999';
-    contentInput.style.background = '#f0f8ff';
-    return;
-  }
-
-  const happyWords = ['happy','smile','peace','hope','love','good','shine'];
-  const sadWords = ['sad','pain','alone','tears','broken','dark','lost','hurt'];
-
-  if(sadWords.some(w => text.includes(w))){
-    indicator.textContent = '💮 Lotus Library (Sad / Emotional)';
-    indicator.style.color = '#8e24aa';
-    contentInput.style.background = '#e8d0f5';
-    sectionSelect.value = 'lotus';
-  } else if(happyWords.some(w => text.includes(w))){
-    indicator.textContent = '🌿 Leaf Library (Happy / Moral)';
-    indicator.style.color = '#2e7d32';
-    contentInput.style.background = '#d0f5d0';
-    sectionSelect.value = 'leaf';
-  } else {
-    indicator.textContent = '💭 Neutral Thought';
-    indicator.style.color = '#999';
-    contentInput.style.background = '#f0f8ff';
-  }
-});
-
-// Form submission (connects to backend)
-document.getElementById('uploadForm').onsubmit = async (e)=>{
-  e.preventDefault();
-  const title = document.getElementById('title').value.trim();
-  const content = contentInput.value.trim();
-  const section = sectionSelect.value || 'leaf';
-  const status = document.getElementById('status');
-
-  if(!title || !content) return alert('Please fill both fields.');
-
-  status.textContent = 'Uploading... ⏳';
-
-  try {
-    const res = await fetch('/api/stories', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ title, content, section })
-    });
-
-    if(res.ok){
-      status.textContent = 'Your thought has been shared! 🌌';
-      e.target.reset();
-      indicator.textContent = '💭 Waiting for input...';
-      indicator.style.color = '#999';
-      contentInput.style.background = '#f0f8ff';
-      setTimeout(()=> location.href='home.html', 1500);
-    } else {
-      status.textContent = '❌ Upload failed. Try again.';
-    }
-  } catch(err){
-    console.error(err);
-    status.textContent = '⚠️ Error connecting to server.';
-  }
-};
-</script>
+<!-- Behavior handled by public/js/upload.js -->
 
 </body>
 </html>

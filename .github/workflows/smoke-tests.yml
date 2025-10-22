@@ -8,6 +8,8 @@ on:
 jobs:
   smoke:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,12 +25,10 @@ jobs:
           npm ci
 
       - name: Run DB connection test (when MONGODB_URI secret provided)
-        if: secrets.MONGODB_URI != ''
-        env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        if: ${{ env.MONGODB_URI != '' }}
         run: |
           node ../backend/scripts/test-mongo-conn.js
 
       - name: Skip DB test when no secret
-        if: secrets.MONGODB_URI == ''
+        if: ${{ env.MONGODB_URI == '' }}
         run: echo "MONGODB_URI secret not provided; skipping DB connection test."
