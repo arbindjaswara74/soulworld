@@ -9,17 +9,19 @@ const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
 
-const connectDB = require('./config/db');
+const connectDB = require('./config/db'); // Ensure this connects using process.env.MONGODB_URI
 const storyRoutes = require('./routes/storyRoutes');
 const thoughtRoutes = require('./routes/thoughtRoutes');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
-connectDB();
+
+// Connect to MongoDB
+connectDB(process.env.MONGODB_URI);
 
 // Middlewares
 app.use(cors());
-app.use(express.json()); // parse JSON bodies
+app.use(express.json());
 app.use(express.static('public', {
   maxAge: '7d',
   etag: true,
@@ -37,7 +39,7 @@ app.use(limiter);
 app.use('/api/stories', storyRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
-// Health check
+// Health check route
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
 
 // Error handling
@@ -47,7 +49,7 @@ app.use(errorHandler);
 // Create HTTP server for Socket.io
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: '*' } // allow frontend connections
+  cors: { origin: '*' },
 });
 
 // --- 7-Person Temporary Chat Logic ---
