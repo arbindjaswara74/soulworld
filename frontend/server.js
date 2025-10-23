@@ -38,8 +38,9 @@ if (!mongoURI) {
 // --------------------
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public', { maxAge: '7d', etag: true }));
+// Security headers early
 app.use(helmet());
+app.use(express.static('public', { maxAge: '7d', etag: true }));
 app.use(mongoSanitize());
 app.use(xss());
 app.use(compression());

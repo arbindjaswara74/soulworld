@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "mongodb": "^6.20.0"
+    "helmet": "^8.1.0",
+    "mongodb": "^6.20.0",
+    "multer": "^2.0.2"
   }
 }

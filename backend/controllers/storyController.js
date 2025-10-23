@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 exports.validateStory = [
   body('title').isLength({ min: 3 }).withMessage('Title too short'),
   body('content').isLength({ min: 10 }).withMessage('Content too short'),
+  body('section').optional().isIn(['leaf','lotus']).withMessage('Invalid section'),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -16,10 +17,11 @@ exports.validateStory = [
 exports.createStory = async (req, res, next) => {
   try {
     const { title, content, authorName, tags } = req.body;
+      const section = req.body.section || 'leaf';
     if (!title || !content) {
       return res.status(400).json({ message: 'Title and content are required' });
     }
-    const story = new Story({ title, content, authorName, tags });
+  const story = new Story({ title, content, authorName, tags, section });
     await story.save();
     res.status(201).json(story);
   } catch (err) {
@@ -30,7 +32,9 @@ exports.createStory = async (req, res, next) => {
 // GET /api/stories
 exports.getStories = async (req, res, next) => {
   try {
-    const stories = await Story.find().sort({ createdAt: -1 }).limit(100);
+    const filter = {};
+    if (req.query.section && ['leaf','lotus'].includes(req.query.section)) filter.section = req.query.section;
+    const stories = await Story.find(filter).sort({ createdAt: -1 }).limit(100);
     res.json(stories);
   } catch (err) {
     next(err);

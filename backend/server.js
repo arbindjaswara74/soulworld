@@ -27,6 +27,8 @@ connectDB(chosenUri);
 // Middlewares
 app.use(cors());
 app.use(express.json());
+// Security headers early
+app.use(helmet());
 // Serve static files. Prefer frontend/public (common layout) then fall back to ../public
 const fs = require('fs');
 let staticDir = path.join(__dirname, '..', 'frontend', 'public');
@@ -38,7 +40,6 @@ app.use(express.static(staticDir, {
   maxAge: '7d',
   etag: true,
 }));
-app.use(helmet());
 app.use(mongoSanitize());
 app.use(xss());
 app.use(compression());
