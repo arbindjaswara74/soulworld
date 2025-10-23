@@ -20,6 +20,11 @@ const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
 
+// If the app is deployed behind a reverse proxy (Heroku, nginx, Cloudflare, etc.),
+// trust the first proxy so Express reads X-Forwarded-* headers correctly (client IP, proto).
+// 1 means trust the first proxy in front of the server.
+app.set('trust proxy', 1);
+
 // Connect to MongoDB - prefer MONGODB_URI, fall back to discrete env vars (DB_USER/DB_PASS/DB_HOST/DB_NAME)
 const chosenUri = process.env.MONGODB_URI || buildUriFromEnv() || undefined;
 connectDB(chosenUri);
